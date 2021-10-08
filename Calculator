@@ -1,0 +1,115 @@
+from tkinter import *
+
+root = Tk()
+root.title("Calculator")
+# white empty screen
+e = Entry(root, width=35, borderwidth=5)
+e.grid(row=0, column=0, columnspan=3)
+
+
+def button_add(number):
+    current = e.get()                       # this is for getting
+    e.delete(0, END)                        # this is for deleting the previous number
+    e.insert(0, str(current) + str(number)) # this concatenate the current number and present number
+
+
+# for clearing the button
+def button_clear():
+    e.delete(0, END)
+
+
+def button_f():
+    first_number = e.get()                # to store the 1st number
+    global f_num                          # to come for the next function
+    global math
+    math = "addition"
+    f_num = int(first_number)             # assigning the 1st number and casting the given string to integer
+    e.delete(0, END)                      # after deleting the assigned number from the screen but not from the memory
+
+
+def button_sub():
+
+    first_number = e.get()                # to store the 1st number
+    global f_num                          # to come for the next function
+    global math
+    math = "subtraction"
+    f_num = int(first_number)             # assigning the 1st number and casting the given string to integer
+    e.delete(0, END)                      # after deleting the assigned number from the screen but not from the memory
+
+
+def button_mul():
+
+    first_number = e.get()                # to store the 1st number
+    global f_num                          # to come for the next function
+    global math
+    math = "multiplication"
+    f_num = int(first_number)             # assigning the 1st number and casting the given string to integer
+    e.delete(0, END)                      # after deleting the assigned number from the screen but not from the memory
+
+
+def button_div():
+
+    first_number = e.get()                # to store the 1st number
+    global f_num                          # to come for the next function
+    global math
+    math = "division"
+    f_num = int(first_number)             # assigning the 1st number and casting the given string to integer
+    e.delete(0, END)                      # after deleting the assigned number from the screen but not from the memory
+
+
+def button_equal():
+    second_number = e.get()               # to store the second number
+    e.delete(0, END)                      # after deleting the assigned number from the screen but not from the memory
+    if math == "addition":
+        e.insert(0, f_num + int(second_number))
+    elif math == "subtraction":
+        e.insert(0, f_num - int(second_number))
+    elif math == "multiplication":
+        e.insert(0, f_num * int(second_number))
+    elif math == "division":
+        e.insert(0, f_num / int(second_number))
+    else:
+        pass
+
+
+# buttons
+b_1 = Button(root, text="1", padx=40, pady=40, command=lambda: button_add(1))
+b_2 = Button(root, text="2", padx=40, pady=40, command=lambda: button_add(2))
+b_3 = Button(root, text="3", padx=40, pady=40, command=lambda: button_add(3))
+b_4 = Button(root, text="4", padx=40, pady=40, command=lambda: button_add(4))
+b_5 = Button(root, text="5", padx=40, pady=40, command=lambda: button_add(5))
+b_6 = Button(root, text="6", padx=40, pady=40, command=lambda: button_add(6))
+b_7 = Button(root, text="7", padx=40, pady=40, command=lambda: button_add(7))
+b_8 = Button(root, text="8", padx=40, pady=40, command=lambda: button_add(8))
+b_9 = Button(root, text="9", padx=40, pady=40, command=lambda: button_add(9))
+b_0 = Button(root, text="0", padx=40, pady=40, command=lambda: button_add(0))
+b_add = Button(root, text="+", padx=39, pady=40, command=button_f)
+b_sub = Button(root, text="-", padx=41, pady=40, command=button_sub)
+b_mul = Button(root, text="*", padx=41, pady=40, command=button_mul)
+b_div = Button(root, text="/", padx=41, pady=40, command=button_div)
+b_eq = Button(root, text="=", padx=90, pady=40, command=button_equal)
+b_clr = Button(root, text="Clear", padx=81, pady=35, command=button_clear)
+
+
+b_1.grid(row=3, column=0,)
+b_2.grid(row=3, column=1,)
+b_3.grid(row=3, column=2,)
+
+b_4.grid(row=2, column=0,)
+b_5.grid(row=2, column=1,)
+b_6.grid(row=2, column=2,)
+
+b_7.grid(row=1, column=0,)
+b_8.grid(row=1, column=1,)
+b_9.grid(row=1, column=2,)
+
+b_0.grid(row=4, column=0,)
+
+b_add.grid(row=5, column=0)
+b_sub.grid(row=6, column=0)
+b_mul.grid(row=6, column=1)
+b_div.grid(row=6, column=2)
+b_eq.grid(row=5, column=1, columnspan=2)
+b_clr.grid(row=4, column=1, columnspan=2)
+
+root.mainloop()
